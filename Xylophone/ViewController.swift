@@ -17,8 +17,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func keyPressed(_ sender: UIButton) {
+    @IBAction func keyPressed(_ sender: UIButton) { //sender = button that got pressed
         playSound(soundName: sender.currentTitle!)
+        
+        //reduce the sender's opacity to half
+        sender.alpha = 0.5
+        print("Start")
+        //Code should execute after 0.2 second delay.
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+             //Bring's sender's opacity back up to fully opaque.
+             sender.alpha = 1.0
+            print("End")
+         }
     }
     
     func playSound(soundName: String) {
